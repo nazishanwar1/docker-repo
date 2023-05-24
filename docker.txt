@@ -1,0 +1,207 @@
+sudo yum remove docker \
+docker-client \
+docker-client-latest \
+docker-common \
+docker-latest \
+docker-latest-logrotate \
+docker-logrotate \
+docker-engine
+
+
+====== Docker ======
+ when an image runs it becomes a container
+
+> yum -y install docker
+> sudo yum remove docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-engine
+> sudo yum install -y yum-utils
+> sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+> sudo yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+> sudo systemctl start docker
+> sudo docker run hello-world
+> docker --help
+> docker ps                                     (to check docker running containers)
+> docker images                                 (to check docker images)
+> docker pull httpd                             (pulls image and starts container)
+> docker pull HTTPD: version                    (full image of specific version)
+> mkdir /tmp/webpg
+> cd /tmp/webpg/
+> vim index.html
+ (copy down page and paste)
+> docker run -dit -p80:80 --name myweb -v "/tmp/webpg:/usr/local/apache2/htdocs" httpd
+(dit=ditached -p=port host-port:container-port --name=container-name -v=volume & webpg is the directory under /tmp and next is container's path)
+  go to browser write 192.168.100.104 it will show container's file content 
+> docker logs container- ID                     (to check logs of container)
+> docker stop container-id                      (to stop a container)
+> docker start container-ID                     (to start a container)
+> docker ps -a                                  (to list running and stopped container)
+> docker system prune -a                        (to remove all about docker container)
+> docker exec -it container-id/name /bin/bash   (to go inside container here we can execute commands e.g pwd,ls,env)
+> exit                                          (to come out of container)
+
+
+---------------------------------------------------
+
+docker run -dit --name webserver - -volume=’/usr/src/app/’ -h peech -p 8080:80 dd85cdbb9987 - -restart always
+
+
+-------------- page --------------------
+
+[root@vm104 ~]# cat /tmp/webpg/index.html
+<html>
+<head>
+Linuxdmz
+<br>
+</head>
+<body>
+
+
+Body section
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
+
+
+
+
+--------------------------------------------
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>CSS Website Layout</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+.header {
+  background-color: black;
+  padding: 20px;
+  text-align: center;
+  color: white;
+  
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: red;
+}
+.topnav a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 18px;
+
+}
+.topnav a:hover {
+  background-color: red;
+  color: yellow;
+
+}
+.column {
+  float: left;
+  padding: 10px;
+}
+.column.side {
+  width: 20%;
+  color: #81a918;
+
+}
+/* Middle column */
+.column.middle {
+  width: 80%;
+  height: 60%;
+  background-color:yellow;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+@media screen and (max-width: 600px) {
+  .column.side, .column.middle {
+    width: 100%;
+
+  }
+}
+.footer {
+  background-color: black;
+  color: white;
+  text-black;
+  padding: 10px;
+  text-align:center;
+}
+
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>Linux Tower</h1>
+</div>
+
+<div class="topnav">
+  <h4>
+    <a href="secondpage.html" target="_self">Login</a>
+    <a href="thirdpage.html">Contact Us</a>
+    <a href="fourthpage.html">About us</a>
+  </h4>
+</div>
+<div class="row">
+  <div class="column side">
+    <h2>Flavours</h2>
+  <a href="">Redhat</a>
+  <br>
+  <a href="">Centos</a>
+  <br>
+  <a href="">Kali Linux</a>
+  <br>
+  <a href="">Arch Linux</a>
+  
+ 
+  </div>
+  <div class="column middle">
+    <h2>About Linux</h2>
+        <p> Linux®️ is an open source operating system (OS). An operating system is the software that directly manages a system's hardware and resources, like CPU, memory, and storage. The OS sits between applications and hardware and makes the connections between all of your software and the physical resources that do the work.</p>
+    <blockquote> “ The Linux philosophy is 'Laugh in the face of danger”
+    </blockquote>
+
+    <h3>Bootloader:</h3> 
+      <p>The software that manages the boot process of your computer. For most users, this will simply be a splash screen that pops up and eventually goes away to boot into the operating system.</p>
+    
+    <h3>Kernel:</h3> 
+      <p>This is the one piece of the whole that is actually called ‘Linux’. The kernel is the core of the system and manages the CPU, memory, and peripheral devices. The kernel is the lowest level of the OS.</p>
+    
+    <h3>Desktop Enviroment:</h3> 
+      <p>This is the piece that the users actually interact with. There are many desktop environments to choose from (GNOME, Cinnamon, Mate, Pantheon, Enlightenment, KDE, Xfce, etc.). Each desktop environment includes built-in applications (such as file managers, configuration tools, web browsers, and games).</p>
+  
+  
+  </div>
+</div>
+    <div class="footer">
+      <p>Maghfoor Ahmad</p>
+      <p>+000 333444555</p>
+    </div>
+  </body>
+</html>
