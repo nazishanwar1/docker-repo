@@ -38,6 +38,30 @@ docker-engine
 > docker exec -it container-id/name /bin/bash   (to go inside container here we can execute commands e.g pwd,ls,env)
 > exit                                          (to come out of container)
 
+------ docker network -----
+
+
+> sudo systemctl start docker
+> docker images
+> docker pull mysql:5.7
+> docker pull wordpress
+> docker run -d --name mysql -p 3306:3306 --restart=always -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=wordpress -e MYSQL_USER=wordpressuser -e MYSQL_PASSWORD=wordpress -v mysql_data:/var/lib/mysql mysql:5.7
+> docker volume ls
+> cd /var/lib/docker/volumes
+> ll
+> cd mysql_data/_data/
+> ll
+> cd
+> docker run -d --name wordpress --link mysql -p 8080:80 -e WORDPRESS_DB_HOST=mysql:3306 -e WORDPRESS_DB_NAME=wordpress -e WORDPRESS_DB_USER=wordpressuser -e WORDPRESS_DB_PASSWORD=wordpress -v wordpress_data:/var/www/html wordpress:latest
+> docker ps
+> docker volume ls
+> cd /var/www/html
+> cd /var /lib/docker/volumes
+> cd /var/lib/docker/volumes
+> ll
+> cd wordpress_data/_data/
+> ll
+> cd
 
 ---------------------------------------------------
 
