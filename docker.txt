@@ -63,6 +63,17 @@ docker-engine
 > ll
 > cd
 
+------ docker image ------
+
+> mkdir dockerfiles
+> cd dockerfiles
+> vim src.html (write html webpage)
+> vim Dockerfile 
+  [FROM nginx   (nginx is the base image)    
+   COPY src.html /usr/share/nginx/html    (copy webpage from source to dest=nginx/html that careated after nginx download)]
+> docker build -t myimage . (-t=tag image-name:tag e.g myimage:1.10)
+> docker run -d -p 80:80 image-id 
+
 ---------------------------------------------------
 
 docker run -dit --name webserver - -volume=’/usr/src/app/’ -h peech -p 8080:80 dd85cdbb9987 - -restart always
